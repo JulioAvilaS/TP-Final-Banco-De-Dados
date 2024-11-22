@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 
 namespace AplicationTpDB.Models
 {
@@ -13,6 +15,11 @@ namespace AplicationTpDB.Models
         public string Rua { get; set; }
         public string Bairro { get; set; }
 
+        [JsonIgnore]
+        public ICollection<PessoaTelefoneModel> Telefones { get; set; }
+
+        [JsonIgnore]
+        public ICollection<PessoaEmailModel> Emails { get; set; }
 
 
     }

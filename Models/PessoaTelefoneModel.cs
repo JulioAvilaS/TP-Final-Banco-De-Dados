@@ -1,6 +1,8 @@
 ﻿namespace AplicationTpDB.Models
 {
-    public class PessoaTelefone
+    public class PessoaTelefoneModel
     {
+        public string CPF { get; set; }
+        public string NumeroTelefone { get; set; }
     }
 }

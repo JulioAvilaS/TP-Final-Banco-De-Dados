@@ -7,7 +7,9 @@ namespace AplicationTpDB.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<PessoaModel>
+        public DbSet<PessoaModel> Pessoa {  get; set; }
+        public DbSet<PessoaEmailModel> PessoaEmails { get; set; }
+        public DbSet<PessoaTelefoneModel> PessoaTelefones { get; set; }
 
     }
 }
