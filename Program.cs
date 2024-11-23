@@ -1,7 +1,7 @@
-
 using AplicationTpDB.Data;
+using AplicationTpDB.Interface;
+using AplicationTpDB.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace AplicationTpDB
 {
@@ -11,34 +11,48 @@ namespace AplicationTpDB
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
+            // Adicionando serviços ao contêiner.
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddScoped<IUnidadeMedica, UnidadeMedicaService>();
+
+            // Configurando DbContext com MySQL
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")));
             });
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configurando pipeline de requisições HTTP.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
+            // Testando a conexão com o banco de dados antes de iniciar o aplicativo
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+                try
+                {
+                    var consultas = context.Consulta.ToList();
+                    Console.WriteLine($"Conexão com o banco de dados bem-sucedida. Total de consultas: {consultas.Count}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao acessar o banco de dados: {ex.Message}");
+                }
+            }
+
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }
