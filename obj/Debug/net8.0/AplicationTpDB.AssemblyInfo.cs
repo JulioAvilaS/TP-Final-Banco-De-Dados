@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AplicationTpDB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48aeca7addebc82c7f2889d6f07827b207f28f51")]
 [assembly: System.Reflection.AssemblyProductAttribute("AplicationTpDB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AplicationTpDB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
