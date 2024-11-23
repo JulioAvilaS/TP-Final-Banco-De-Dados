@@ -1,4 +1,5 @@
-﻿using AplicationTpDB.Models;
+﻿using AplicationTpDB.Data.Map;
+using AplicationTpDB.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AplicationTpDB.Data
@@ -44,6 +45,8 @@ namespace AplicationTpDB.Data
                 .Property(p => p.DataNascimento)
                 .HasColumnName("Data_Nascimento")
                 .HasColumnType("DATE");
+
+            modelBuilder.ApplyConfiguration (new PessoaMap());
 
         }
 
