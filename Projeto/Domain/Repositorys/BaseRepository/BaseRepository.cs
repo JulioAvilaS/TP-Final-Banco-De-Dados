@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using AplicationTpDB.Interface;
 
-namespace AplicationTpDB.Domain.BaseRepository
+namespace AplicationTpDB.Domain.Repositorios.BaseRepository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
@@ -70,7 +70,7 @@ namespace AplicationTpDB.Domain.BaseRepository
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            var itens = await _dbSet.AsNoTracking().ToListAsync<T>();
+            var itens = await _dbSet.AsNoTracking().ToListAsync();
 
             return itens ?? new List<T>();
         }

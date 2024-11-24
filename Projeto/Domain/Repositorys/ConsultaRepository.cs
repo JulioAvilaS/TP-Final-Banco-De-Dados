@@ -1,10 +1,10 @@
 ﻿using AplicationTpDB.Data;
-using AplicationTpDB.Domain.BaseRepository;
+using AplicationTpDB.Domain.Repositorios.BaseRepository;
 using AplicationTpDB.Interface;
 using AplicationTpDB.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AplicationTpDB.Domain
+namespace AplicationTpDB.Domain.Repositorios
 {
     public class ConsultaRepository : BaseRepository<ConsultaModel>, IConsultaRepository
     {

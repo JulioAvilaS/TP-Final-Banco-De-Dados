@@ -1,9 +1,9 @@
 ﻿using AplicationTpDB.Data;
-using AplicationTpDB.Domain.BaseRepository;
+using AplicationTpDB.Domain.Repositorios.BaseRepository;
 using AplicationTpDB.Interface;
 using AplicationTpDB.Models;
 
-namespace AplicationTpDB.Domain
+namespace AplicationTpDB.Domain.Repositorios
 {
     public class UnidadeMedicaRepository : BaseRepository<UnidadeMedicaModel>, IUnidadeMedicaRepository
     {

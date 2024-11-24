@@ -26,30 +26,29 @@ namespace AplicationTpDB.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PessoaModel>()
-                .HasKey(p => p.CPF); 
-
-            modelBuilder.Entity<MedicoModel>()
-                .HasOne<PessoaModel>() 
-                .WithMany()
-                .HasForeignKey(m => m.PessoaCPF);
 
             modelBuilder.Entity<MedicoEspecialidadeModel>()
-                .HasKey(me => new { me.EspecialidadeID, me.MedicoCRM }); 
+                .HasKey(me => new { me.MedicoCRM, me.EspecialidadeID }); // Define a chave composta
 
-            modelBuilder.Entity<PessoaModel>()
-                .Property(p => p.Nome)
-                .HasColumnName("Nome_Completo");
+            // Relacionamento entre MedicoEspecialidade e Medico
+            modelBuilder.Entity<MedicoEspecialidadeModel>()
+                .HasOne(me => me.Medico)
+                .WithMany(m => m.MedicoEspecialidades)
+                .HasForeignKey(me => me.MedicoCRM); // Relaciona MedicoCRM à chave primária de MedicoModel (CRM)
 
-            modelBuilder.Entity<PessoaModel>()
-                .Property(p => p.DataNascimento)
-                .HasColumnName("Data_Nascimento")
-                .HasColumnType("DATE");
+            // Relacionamento entre MedicoEspecialidade e Especialidade
+            modelBuilder.Entity<MedicoEspecialidadeModel>()
+                .HasOne(me => me.Especialidade)
+                .WithMany(e => e.MedicoEspecialidades)
+                .HasForeignKey(me => me.EspecialidadeID); // Relaciona EspecialidadeID à chave primária de EspecialidadeModel (ID)
 
-            modelBuilder.ApplyConfiguration (new PessoaMap());
+            // Outras configurações do modelo
+            modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new MedicoMap());
 
-        }
 
+
+
+        }
     }
 }

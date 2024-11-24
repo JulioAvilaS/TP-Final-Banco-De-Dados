@@ -1,6 +1,6 @@
 using AplicationTpDB.Data;
+using AplicationTpDB.Domain.Repositorios;
 using AplicationTpDB.Interface;
-using AplicationTpDB.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace AplicationTpDB

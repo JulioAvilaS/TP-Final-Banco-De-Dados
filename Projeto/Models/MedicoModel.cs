@@ -6,7 +6,6 @@ namespace AplicationTpDB.Models
     [Table("medico")]
     public class MedicoModel
     {
-
         [Key]
         public int CRM { get; set; }
 
@@ -19,9 +18,7 @@ namespace AplicationTpDB.Models
         [Column("Data_Admissao")]
         public DateTime DataAdmissao { get; set; }
 
-
-        public PessoaModel Pessoa { get; set; }
-        public ICollection<EspecialidadeModel> Especialidades { get; set; }
-
+        // Propriedade de navegação para MedicoEspecialidadeModel
+        public ICollection<MedicoEspecialidadeModel> MedicoEspecialidades { get; set; }
     }
 }

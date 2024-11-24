@@ -15,5 +15,6 @@ namespace AplicationTpDB.Models
         [Required]
         public string Descricao { get; set; }
 
+        public ICollection<MedicoEspecialidadeModel> MedicoEspecialidades { get; set; }
     }
 }
