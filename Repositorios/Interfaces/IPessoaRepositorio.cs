@@ -9,8 +9,8 @@ namespace AplicationTpDB.Repositorios.Interfaces
 
         Task<PessoaModel> AdicionarPessoa(PessoaModel pessoa);
 
-        Task<PessoaModel> AtualizarPessoa(PessoaModel pessoa, int id);
+        Task<PessoaModel> AtualizarPessoa(PessoaModel pessoa, string id);
 
-        Task<PessoaModel> ApagarPessoa(int id);
+        Task<PessoaModel> ApagarPessoa(string id);
     }
 }

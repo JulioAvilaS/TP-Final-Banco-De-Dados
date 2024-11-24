@@ -13,17 +13,18 @@ namespace AplicationTpDB.Repositorios
             _appBbContext = appDbContext;
         }
 
-        public async Task<PessoaModel> BuscarPorId(string cpf)
+
+        async Task<PessoaModel> IPessoaRepositorio.BuscarPorId(string cpf)
         {
             return await _appBbContext.Pessoa.FirstOrDefaultAsync(x => x.CPF == cpf);
         }
 
-        public async Task<List<PessoaModel>> BuscarTodasPessoas()
+        async Task<List<PessoaModel>> IPessoaRepositorio.BuscarTodasPessoas()
         {
             return await _appBbContext.Pessoa.ToListAsync();
         }
 
-        public async Task<PessoaModel> AdicionarPessoa(PessoaModel pessoa)
+        async Task<PessoaModel> IPessoaRepositorio.AdicionarPessoa(PessoaModel pessoa)
         {
             await _appBbContext.Pessoa.AddAsync(pessoa);
             _appBbContext.SaveChanges();
@@ -31,7 +32,7 @@ namespace AplicationTpDB.Repositorios
             return pessoa;
         }
 
-        public async Task<bool> ApagarPessoa(string cpf)
+        async Task<bool> IPessoaRepositorio.ApagarPessoa(string cpf)
         {
             PessoaModel pessoaPorId = await BuscarPorId(cpf);
 
@@ -46,7 +47,7 @@ namespace AplicationTpDB.Repositorios
             return true;
         }
 
-        public async Task<PessoaModel> AtualizarPessoa(PessoaModel pessoa, string cpf)
+        async Task<PessoaModel> IPessoaRepositorio.AtualizarPessoa(PessoaModel pessoa, string cpf)
         {
             PessoaModel pessoaPorId = await BuscarPorId(cpf);
 
@@ -70,20 +71,5 @@ namespace AplicationTpDB.Repositorios
             return pessoaPorId;
         }
 
-
-        Task<PessoaModel> IPessoaRepositorio.BuscarPorId(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<PessoaModel> IPessoaRepositorio.ApagarPessoa(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<PessoaModel> IPessoaRepositorio.AtualizarPessoa(PessoaModel pessoa, int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

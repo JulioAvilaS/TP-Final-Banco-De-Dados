@@ -47,6 +47,7 @@ namespace AplicationTpDB.Data
                 .HasColumnType("DATE");
 
             modelBuilder.ApplyConfiguration (new PessoaMap());
+            modelBuilder.ApplyConfiguration(new MedicoMap());
 
         }
 
