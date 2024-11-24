@@ -231,3 +231,46 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Arquivos e pastas do .NET Core
+bin/
+obj/
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
+*.log
+
+# Visual Studio files
+.vs/
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.sdf
+*.opensdf
+*.sln.docstates
+
+# Arquivos de build
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Arquivos temporários do Visual Studio
+.vscode/
+*.tmp
+*.swp
+.~
+project.lock.json
+.DS_Store
+*.pyc
