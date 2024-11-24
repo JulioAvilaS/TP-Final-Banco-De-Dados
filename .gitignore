@@ -1,8 +1,11 @@
+bin/
+obj/
 desktop.ini
 node_modules
 desktop.ini
 *.suo
 *.user
+*.suo
 *.sln.docstates
 
 # Build results
@@ -203,6 +206,7 @@ project.lock.json
 
 # Visual Studio Code
 .vscode/
+*.DS_Store
 
 # Output folder used by Webpack or other FE stuff
 */node_modules/
